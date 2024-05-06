@@ -19,6 +19,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IEntrevistaFuncionariosEmpresaRepository, EntrevistaFuncionariosEmpresaRepository>();
 builder.Services.AddScoped<IEntrevistaFuncionariosEmpresaService, EntrevistaFuncionariosEmpresaService>();
 
+builder.Services.AddScoped<IFuncionariosEmpresaRepository, FuncionariosEmpresaRepository>();
+builder.Services.AddScoped<IFuncionariosEmpresaService, FuncionariosEmpresaService>();
+
 //Realização a injeção de dependência do nosso BD
 var connectionString = configuration.GetValue<string>("ConnectionStringPostgres");
 builder.Services.AddScoped<IDbConnection>((connection) => new NpgsqlConnection(connectionString));
