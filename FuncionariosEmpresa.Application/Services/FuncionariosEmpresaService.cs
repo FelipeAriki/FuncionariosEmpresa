@@ -24,7 +24,7 @@ namespace FuncionariosEmpresa.Application.Services
         {
             throw new NotImplementedException();
         }
-        public Task<FuncionarioEmpresa> GetAsync()
+        public Task<FuncionarioEmpresa> GetAsync(int id)
         {
             throw new NotImplementedException();
         }

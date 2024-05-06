@@ -8,6 +8,7 @@ namespace FuncionariosEmpresa.Domain.Entities
 {
     public class EntrevistaFuncionariosEmpresa
     {
+        public int Id { get; set; }
         public string? Empresa { get; set; }
         public DateTime DataEntrevista { get; set; }
         public float Salario { get; set; }

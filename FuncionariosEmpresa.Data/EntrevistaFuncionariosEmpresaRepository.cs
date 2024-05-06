@@ -1,10 +1,12 @@
 ﻿using Dapper;
+using Dapper.Contrib.Extensions;
 using FuncionariosEmpresa.Domain.Entities;
 using FuncionariosEmpresa.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,29 +23,39 @@ namespace FuncionariosEmpresa.Data
 
         public async Task CreateAsync(EntrevistaFuncionariosEmpresa entrevista)
         {
-            var sql = @"INSERT INTO ";
+            var sql = @"INSERT INTO ""Entrevista"" (""Empresa"", ""DataEntrevista"", ""Salario"", ""ResponsavelVaga"") VALUES (@Empresa, @DataEntrevista, @Salario, @ResponsavelVaga)";
 
-            await _connection.ExecuteAsync(sql, entrevista);
+            await _connection.ExecuteScalarAsync(sql, entrevista);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var sql = @"DELETE FROM ""Entrevista"" WHERE ""Id"" = @id";
+
+            await _connection.ExecuteScalarAsync(sql, new { id });
         }
 
-        public Task<IEnumerable<EntrevistaFuncionariosEmpresa>> GetAllAsync()
+        public async Task<IEnumerable<EntrevistaFuncionariosEmpresa>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var sql = @" SELECT * FROM ""Entrevista"" " ;
+            var resultado = await _connection.QueryAsync<EntrevistaFuncionariosEmpresa>(sql);
+            return resultado.ToList();
         }
 
-        public Task<EntrevistaFuncionariosEmpresa> GetAsync()
+        public async Task<EntrevistaFuncionariosEmpresa> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            var sql = @" SELECT * FROM ""Entrevista"" WHERE ""Id"" = @Id";
+            var resultado = await _connection.QueryAsync<EntrevistaFuncionariosEmpresa>(sql, new { Id = id });
+            return resultado.FirstOrDefault();
         }
 
-        public Task UpdateAsync(EntrevistaFuncionariosEmpresa entrevistas)
+        public async Task UpdateAsync(EntrevistaFuncionariosEmpresa entrevistas)
         {
-            throw new NotImplementedException();
+            var sql = @"UPDATE ""Entrevista""
+                       SET ""Empresa"" = @Empresa, ""DataEntrevista"" = @DataEntrevista, ""Salario"" = @Salario, ""ResponsavelVaga"" = @ResponsavelVaga
+                       WHERE ""Id"" = @Id";
+
+            await _connection.ExecuteScalarAsync(sql, entrevistas);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace FuncionariosEmpresa.Domain.Entities
 {
     public class FuncionarioEmpresa
     {
+        public int Id { get; set; }
         public string? Nome { get; set; }
         public DateTime Idade { get; set;}
         public string? NomeDosPais { get; set;}

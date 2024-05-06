@@ -1,3 +1,6 @@
+using FuncionariosEmpresa.Application.Services;
+using FuncionariosEmpresa.Data;
+using FuncionariosEmpresa.Domain.Interfaces;
 using Npgsql;
 using System.Data;
 
@@ -13,6 +16,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IEntrevistaFuncionariosEmpresaRepository, EntrevistaFuncionariosEmpresaRepository>();
+builder.Services.AddScoped<IEntrevistaFuncionariosEmpresaService, EntrevistaFuncionariosEmpresaService>();
 
 //Realização a injeção de dependência do nosso BD
 var connectionString = configuration.GetValue<string>("ConnectionStringPostgres");
