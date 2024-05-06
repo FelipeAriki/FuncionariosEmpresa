@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FuncionariosEmpresa.Data
+namespace FuncionariosEmpresa.Data.Repositories
 {
     public class FuncionariosEmpresaRepository : IFuncionariosEmpresaRepository
     {

@@ -1,5 +1,5 @@
 using FuncionariosEmpresa.Application.Services;
-using FuncionariosEmpresa.Data;
+using FuncionariosEmpresa.Data.Repositories;
 using FuncionariosEmpresa.Domain.Interfaces;
 using Npgsql;
 using System.Data;

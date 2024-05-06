@@ -10,7 +10,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FuncionariosEmpresa.Data
+namespace FuncionariosEmpresa.Data.Repositories
 {
     public class EntrevistaFuncionariosEmpresaRepository : IEntrevistaFuncionariosEmpresaRepository
     {
@@ -37,7 +37,7 @@ namespace FuncionariosEmpresa.Data
 
         public async Task<IEnumerable<EntrevistaFuncionariosEmpresa>> GetAllAsync()
         {
-            var sql = @" SELECT * FROM ""Entrevista"" " ;
+            var sql = @" SELECT * FROM ""Entrevista"" ";
             var resultado = await _connection.QueryAsync<EntrevistaFuncionariosEmpresa>(sql);
             return resultado.ToList();
         }
