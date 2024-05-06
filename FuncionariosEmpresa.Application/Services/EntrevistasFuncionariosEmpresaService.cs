@@ -10,7 +10,7 @@ namespace FuncionariosEmpresa.Application.Services
 {
     public class EntrevistasFuncionariosEmpresaService : IEntrevistaFuncionariosEmpresaService
     {
-        public Task CreateAsync(EntrevistaFuncionariosEmpresa entrevistas)
+        public Task CreateAsync(EntrevistaFuncionariosEmpresa entrevista)
         {
             throw new NotImplementedException();
         }
@@ -30,7 +30,7 @@ namespace FuncionariosEmpresa.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(EntrevistaFuncionariosEmpresa entrevistas)
+        public Task UpdateAsync(EntrevistaFuncionariosEmpresa entrevista)
         {
             throw new NotImplementedException();
         }

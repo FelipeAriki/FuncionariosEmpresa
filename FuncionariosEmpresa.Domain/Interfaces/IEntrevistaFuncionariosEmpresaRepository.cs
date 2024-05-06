@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FuncionariosEmpresa.Domain.Interfaces
 {
-    public interface IEntrevistaFuncionariosEmpresaService
+    public interface IEntrevistaFuncionariosEmpresaRepository
     {
         public Task<IEnumerable<EntrevistaFuncionariosEmpresa>> GetAllAsync();
         public Task<EntrevistaFuncionariosEmpresa> GetAsync();
