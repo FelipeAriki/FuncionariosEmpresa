@@ -10,7 +10,7 @@ namespace FuncionariosEmpresa.Domain.Interfaces
     public interface IFuncionariosEmpresaService
     {
         public Task<IEnumerable<FuncionarioEmpresa>> GetAllAsync();
-        public Task<FuncionarioEmpresa> GetAsync(int id);
+        public Task<FuncionarioEmpresa> GetByIdAsync(int id);
         public Task CreateAsync(FuncionarioEmpresa funcionario);
         public Task UpdateAsync(FuncionarioEmpresa funcionario);
         public Task DeleteAsync(int id);

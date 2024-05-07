@@ -10,28 +10,35 @@ namespace FuncionariosEmpresa.Application.Services
 {
     public class FuncionariosEmpresaService : IFuncionariosEmpresaService
     {
-        public Task CreateAsync(FuncionarioEmpresa funcionario)
+        private readonly IFuncionariosEmpresaRepository _funcionariosEmpresaRepository;
+
+        public FuncionariosEmpresaService(IFuncionariosEmpresaRepository funcionariosEmpresaRepository)
         {
-            throw new NotImplementedException();
+            _funcionariosEmpresaRepository = funcionariosEmpresaRepository;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task CreateAsync(FuncionarioEmpresa funcionario)
         {
-            throw new NotImplementedException();
+            await _funcionariosEmpresaRepository.CreateAsync(funcionario);
         }
 
-        public Task<IEnumerable<FuncionarioEmpresa>> GetAllAsync()
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
-        }
-        public Task<FuncionarioEmpresa> GetAsync(int id)
-        {
-            throw new NotImplementedException();
+            await _funcionariosEmpresaRepository.DeleteAsync(id);
         }
 
-        public Task UpdateAsync(FuncionarioEmpresa funcionario)
+        public async Task<IEnumerable<FuncionarioEmpresa>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _funcionariosEmpresaRepository.GetAllAsync();
+        }
+        public async Task<FuncionarioEmpresa> GetByIdAsync(int id)
+        {
+            return await _funcionariosEmpresaRepository.GetByIdAsync(id);
+        }
+
+        public async Task UpdateAsync(FuncionarioEmpresa funcionario)
+        {
+            await _funcionariosEmpresaRepository.UpdateAsync(funcionario);
         }
     }
 }
