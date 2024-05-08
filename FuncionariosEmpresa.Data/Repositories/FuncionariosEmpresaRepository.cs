@@ -1,4 +1,5 @@
-﻿using FuncionariosEmpresa.Domain.Entities;
+﻿using Dapper;
+using FuncionariosEmpresa.Domain.Entities;
 using FuncionariosEmpresa.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,29 +19,38 @@ namespace FuncionariosEmpresa.Data.Repositories
             _connection = dbConnection;
         }
 
-        public Task CreateAsync(FuncionarioEmpresa funcionario)
+        public async Task CreateAsync(FuncionarioEmpresa funcionario)
         {
-            throw new NotImplementedException();
+            var sql = @" INSERT INTO ""Funcionario"" (""Nome"", ""Idade"", ""NomeDosPais"") VALUES (@Nome, @Idade, @NomeDosPais)";
+            await _connection.ExecuteScalarAsync(sql, funcionario);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var sql = @" DELETE FROM ""Funcionario"" WHERE ""Id"" = @Id";
+            await _connection.ExecuteScalarAsync(sql, new { Id = id });
         }
 
-        public Task<IEnumerable<FuncionarioEmpresa>> GetAllAsync()
+        public async Task<IEnumerable<FuncionarioEmpresa>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var sql = @" SELECT * FROM ""Funcionario"" ";
+            var resultado = await _connection.QueryAsync<FuncionarioEmpresa>(sql);
+            return resultado.ToList();
         }
 
-        public Task<FuncionarioEmpresa> GetByIdAsync(int id)
+        public async Task<FuncionarioEmpresa> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var sql = @" SELECT * FROM ""Funcionario"" WHERE ""Id"" = @Id";
+            var resultado = await _connection.QueryAsync<FuncionarioEmpresa>(sql, new { Id = id });
+            return resultado.FirstOrDefault();
         }
 
-        public Task UpdateAsync(FuncionarioEmpresa funcionario)
+        public async Task UpdateAsync(FuncionarioEmpresa funcionario)
         {
-            throw new NotImplementedException();
+            var sql = @" UPDATE ""Funcionario""
+                         SET ""Nome"" = @Nome, ""Idade"" = @Idade, ""NomeDosPais"" = @NomeDosPais
+                         WHERE ""Id"" = @Id";
+            await _connection.ExecuteScalarAsync(sql, funcionario);
         }
     }
 }
