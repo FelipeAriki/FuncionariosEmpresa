@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FuncionariosEmpresa.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,10 @@ namespace FuncionariosEmpresa.Domain.Interfaces
 {
     public interface IEnderecoFuncionariosEmpresaRepository
     {
+        public Task<IEnumerable<EnderecoFuncionariosEmpresa>> GetAllAsync();
+        public Task<EnderecoFuncionariosEmpresa> GetByIdAsync(int id);
+        public Task CreateAsync(EnderecoFuncionariosEmpresa endereco);
+        public Task UpdateAsync(EnderecoFuncionariosEmpresa endereco);
+        public Task DeleteAsync(int id);
     }
 }

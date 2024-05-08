@@ -10,7 +10,7 @@ namespace FuncionariosEmpresa.Domain.Interfaces
     public interface IEntrevistaFuncionariosEmpresaRepository
     {
         public Task<IEnumerable<EntrevistaFuncionariosEmpresa>> GetAllAsync();
-        public Task<EntrevistaFuncionariosEmpresa> GetAsync(int id);
+        public Task<EntrevistaFuncionariosEmpresa> GetByIdAsync(int id);
         public Task CreateAsync(EntrevistaFuncionariosEmpresa entrevista);
         public Task UpdateAsync(EntrevistaFuncionariosEmpresa entrevista);
         public Task DeleteAsync(int id);

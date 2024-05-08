@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FuncionariosEmpresa.Application.Services
+namespace FuncionariosEmpresa.Data.Repositories
 {
-    public class EnderecoFuncionariosEmpresaService : IEnderecoFuncionariosEmpresaService
+    public class EnderecoFuncionariosEmpresaRepository : IEnderecoFuncionariosEmpresaRepository
     {
         public Task CreateAsync(EnderecoFuncionariosEmpresa endereco)
         {

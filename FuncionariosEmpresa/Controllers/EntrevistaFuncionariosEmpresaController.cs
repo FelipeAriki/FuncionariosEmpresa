@@ -26,7 +26,7 @@ namespace FuncionariosEmpresa.Controllers
         [HttpGet("GetById")]
         public async Task<IActionResult> GetById(int id)
         {
-            var resultado = await _entrevistasFuncionariosEmpresaService.GetAsync(id);
+            var resultado = await _entrevistasFuncionariosEmpresaService.GetByIdAsync(id);
             return resultado == null ? Ok(new List<EntrevistaFuncionariosEmpresa>()) : Ok(resultado);
         }
 

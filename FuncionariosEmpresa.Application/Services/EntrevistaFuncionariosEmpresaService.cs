@@ -31,9 +31,9 @@ namespace FuncionariosEmpresa.Application.Services
             return await _entrevistaFuncionariosEmpresaRepository.GetAllAsync();
         }
 
-        public async Task<EntrevistaFuncionariosEmpresa> GetAsync(int id)
+        public async Task<EntrevistaFuncionariosEmpresa> GetByIdAsync(int id)
         {
-            return await _entrevistaFuncionariosEmpresaRepository.GetAsync(id);
+            return await _entrevistaFuncionariosEmpresaRepository.GetByIdAsync(id);
         }
 
         public async Task UpdateAsync(EntrevistaFuncionariosEmpresa entrevista)

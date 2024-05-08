@@ -42,7 +42,7 @@ namespace FuncionariosEmpresa.Data.Repositories
             return resultado.ToList();
         }
 
-        public async Task<EntrevistaFuncionariosEmpresa> GetAsync(int id)
+        public async Task<EntrevistaFuncionariosEmpresa> GetByIdAsync(int id)
         {
             var sql = @" SELECT * FROM ""Entrevista"" WHERE ""Id"" = @Id";
             var resultado = await _connection.QueryAsync<EntrevistaFuncionariosEmpresa>(sql, new { Id = id });
