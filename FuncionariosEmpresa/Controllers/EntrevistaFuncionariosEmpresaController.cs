@@ -30,21 +30,21 @@ namespace FuncionariosEmpresa.Controllers
             return resultado == null ? Ok(new List<EntrevistaFuncionariosEmpresa>()) : Ok(resultado);
         }
 
-        [HttpPost("Create")]
+        [HttpPost("CreateAsync")]
         public async Task<IActionResult> CreateAsync(EntrevistaFuncionariosEmpresa entrevista)
         {
             await _entrevistasFuncionariosEmpresaService.CreateAsync(entrevista);
             return Created();
         }
 
-        [HttpDelete("Remove")]
+        [HttpDelete("DeleteAsync")]
         public async Task<IActionResult> DeleteAsync([FromQuery] int id)
         {
             await _entrevistasFuncionariosEmpresaService.DeleteAsync(id);
             return NoContent();
         }
 
-        [HttpPut("Update")]
+        [HttpPut("UpdateAsync")]
         public async Task<IActionResult> UpdateAsync(EntrevistaFuncionariosEmpresa entrevista)
         {
             await _entrevistasFuncionariosEmpresaService.UpdateAsync(entrevista);

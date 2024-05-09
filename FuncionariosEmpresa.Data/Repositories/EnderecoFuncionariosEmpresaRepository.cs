@@ -10,7 +10,7 @@ namespace FuncionariosEmpresa.Data.Repositories
 {
     public class EnderecoFuncionariosEmpresaRepository : IEnderecoFuncionariosEmpresaRepository
     {
-        public Task CreateAsync(EnderecoFuncionariosEmpresa endereco)
+        public Task CreateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario)
         {
             throw new NotImplementedException();
         }
@@ -30,7 +30,7 @@ namespace FuncionariosEmpresa.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(EnderecoFuncionariosEmpresa endereco)
+        public Task UpdateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario)
         {
             throw new NotImplementedException();
         }

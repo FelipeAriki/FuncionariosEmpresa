@@ -11,8 +11,8 @@ namespace FuncionariosEmpresa.Domain.Interfaces
     {
         public Task<IEnumerable<EnderecoFuncionariosEmpresa>> GetAllAsync();
         public Task<EnderecoFuncionariosEmpresa> GetByIdAsync(int id);
-        public Task CreateAsync(EnderecoFuncionariosEmpresa endereco);
-        public Task UpdateAsync(EnderecoFuncionariosEmpresa endereco);
+        public Task CreateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario);
+        public Task UpdateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario);
         public Task DeleteAsync(int id);
     }
 }

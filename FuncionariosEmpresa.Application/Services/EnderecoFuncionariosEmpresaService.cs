@@ -10,29 +10,35 @@ namespace FuncionariosEmpresa.Application.Services
 {
     public class EnderecoFuncionariosEmpresaService : IEnderecoFuncionariosEmpresaService
     {
-        public Task CreateAsync(EnderecoFuncionariosEmpresa endereco)
+        private readonly IEnderecoFuncionariosEmpresaRepository _enderecoFuncionariosRepository;
+        public EnderecoFuncionariosEmpresaService(IEnderecoFuncionariosEmpresaRepository enderecoFuncionariosRepository)
         {
-            throw new NotImplementedException();
+            _enderecoFuncionariosRepository = enderecoFuncionariosRepository;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task CreateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario)
         {
-            throw new NotImplementedException();
+            await _enderecoFuncionariosRepository.CreateAsync(endereco, idFuncionario);
         }
 
-        public Task<IEnumerable<EnderecoFuncionariosEmpresa>> GetAllAsync()
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await _enderecoFuncionariosRepository.DeleteAsync(id);
         }
 
-        public Task<EnderecoFuncionariosEmpresa> GetByIdAsync(int id)
+        public async Task<IEnumerable<EnderecoFuncionariosEmpresa>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _enderecoFuncionariosRepository.GetAllAsync();
         }
 
-        public Task UpdateAsync(EnderecoFuncionariosEmpresa endereco)
+        public async Task<EnderecoFuncionariosEmpresa> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _enderecoFuncionariosRepository.GetByIdAsync(id);
+        }
+
+        public async Task UpdateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario)
+        {
+            await _enderecoFuncionariosRepository.UpdateAsync(endereco, idFuncionario);
         }
     }
 }
