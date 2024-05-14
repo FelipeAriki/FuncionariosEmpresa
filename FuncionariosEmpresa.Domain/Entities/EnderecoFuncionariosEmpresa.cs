@@ -9,6 +9,7 @@ namespace FuncionariosEmpresa.Domain.Entities
 {
     public class EnderecoFuncionariosEmpresa
     {
+        public int Id { get; set; }
         public int IdFuncionario { get; set; }
         public string? Rua { get; set; }
         public int Numero { get; set; }

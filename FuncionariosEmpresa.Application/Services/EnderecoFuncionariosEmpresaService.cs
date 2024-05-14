@@ -16,9 +16,9 @@ namespace FuncionariosEmpresa.Application.Services
             _enderecoFuncionariosRepository = enderecoFuncionariosRepository;
         }
 
-        public async Task CreateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario)
+        public async Task CreateAsync(EnderecoFuncionariosEmpresa endereco)
         {
-            await _enderecoFuncionariosRepository.CreateAsync(endereco, idFuncionario);
+            await _enderecoFuncionariosRepository.CreateAsync(endereco);
         }
 
         public async Task DeleteAsync(int id)
@@ -36,9 +36,9 @@ namespace FuncionariosEmpresa.Application.Services
             return await _enderecoFuncionariosRepository.GetByIdAsync(id);
         }
 
-        public async Task UpdateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario)
+        public async Task UpdateAsync(EnderecoFuncionariosEmpresa endereco)
         {
-            await _enderecoFuncionariosRepository.UpdateAsync(endereco, idFuncionario);
+            await _enderecoFuncionariosRepository.UpdateAsync(endereco);
         }
     }
 }

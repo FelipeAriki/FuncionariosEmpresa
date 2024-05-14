@@ -1,7 +1,9 @@
-﻿using FuncionariosEmpresa.Domain.Entities;
+﻿using Dapper;
+using FuncionariosEmpresa.Domain.Entities;
 using FuncionariosEmpresa.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,29 +12,54 @@ namespace FuncionariosEmpresa.Data.Repositories
 {
     public class EnderecoFuncionariosEmpresaRepository : IEnderecoFuncionariosEmpresaRepository
     {
-        public Task CreateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario)
+        private readonly IFuncionariosEmpresaRepository _funcionariosEmpresaRepository;
+        private readonly IDbConnection _connection;
+        public EnderecoFuncionariosEmpresaRepository(IFuncionariosEmpresaRepository funcionariosEmpresaRepository, IDbConnection dbConnection)
         {
-            throw new NotImplementedException();
+            _funcionariosEmpresaRepository = funcionariosEmpresaRepository;
+            _connection = dbConnection;
+        }
+        public async Task CreateAsync(EnderecoFuncionariosEmpresa endereco)
+        {
+            var funcionario = await _funcionariosEmpresaRepository.GetByIdAsync(endereco.IdFuncionario);
+            if (funcionario != null)
+            {
+                var sql = @"INSERT INTO ""Endereco""(""IdFuncionario"", ""Rua"", ""Numero"", ""Cep"", ""Cidade"", ""Estado"") VALUES (@IdFuncionario, @Rua, @Numero, @Cep, @Cidade, @Estado)";
+                await _connection.ExecuteScalarAsync(sql, endereco);
+            }
+            
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var sql = @"DELETE FROM ""Endereco"" WHERE ""Id"" = @Id";
+            await _connection.ExecuteScalarAsync(sql, new { Id = id });
         }
 
-        public Task<IEnumerable<EnderecoFuncionariosEmpresa>> GetAllAsync()
+        public async Task<IEnumerable<EnderecoFuncionariosEmpresa>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var sql = @"SELECT * FROM ""Endereco""";
+            var resultado = await _connection.QueryAsync<EnderecoFuncionariosEmpresa>(sql);
+            return resultado.ToList();
         }
 
-        public Task<EnderecoFuncionariosEmpresa> GetByIdAsync(int id)
+        public async Task<EnderecoFuncionariosEmpresa> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var sql = @"SELECT * FROM ""Endereco"" WHERE ""Id"" = @Id";
+            var resultado = await _connection.QueryAsync<EnderecoFuncionariosEmpresa>(sql, new { Id = id });
+            return resultado.FirstOrDefault();
         }
 
-        public Task UpdateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario)
+        public async Task UpdateAsync(EnderecoFuncionariosEmpresa endereco)
         {
-            throw new NotImplementedException();
+            var funcionario = await _funcionariosEmpresaRepository.GetByIdAsync(endereco.IdFuncionario);
+            if(funcionario != null)
+            {
+                var sql = @"UPDATE ""Endereco""
+                           SET ""IdFuncionario"" = @IdFuncionario, ""Rua"" = @Rua, ""Numero"" = @Numero, ""Cep"" = @Cep, ""Cidade"" = @Cidade, ""Estado"" = @Estado
+                           WHERE ""Id"" = @Id";
+                await _connection.ExecuteScalarAsync(sql, endereco);
+            }
         }
     }
 }

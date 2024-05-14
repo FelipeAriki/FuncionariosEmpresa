@@ -30,16 +30,16 @@ namespace FuncionariosEmpresa.Controllers
         }
 
         [HttpPost("CreateAsync")]
-        public async Task<IActionResult> CreateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario)
+        public async Task<IActionResult> CreateAsync(EnderecoFuncionariosEmpresa endereco)
         {
-            await _enderecoFuncionariosEmpresaService.CreateAsync(endereco, idFuncionario);
+            await _enderecoFuncionariosEmpresaService.CreateAsync(endereco);
             return Created();
         }
 
         [HttpPut("UpdateAsync")]
-        public async Task<IActionResult> UpdateAsync(EnderecoFuncionariosEmpresa endereco, int idFuncionario)
+        public async Task<IActionResult> UpdateAsync(EnderecoFuncionariosEmpresa endereco)
         {
-            await _enderecoFuncionariosEmpresaService.UpdateAsync(endereco, idFuncionario);
+            await _enderecoFuncionariosEmpresaService.UpdateAsync(endereco);
             return Ok(new {Mensagem = "Endereço Atualizado com sucesso!"});
         }
 
