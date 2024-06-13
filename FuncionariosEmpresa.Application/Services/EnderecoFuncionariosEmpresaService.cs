@@ -1,10 +1,6 @@
-﻿using FuncionariosEmpresa.Domain.Entities;
+﻿using FuncionariosEmpresa.Application.Interfaces;
+using FuncionariosEmpresa.Domain.Entities;
 using FuncionariosEmpresa.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FuncionariosEmpresa.Application.Services
 {

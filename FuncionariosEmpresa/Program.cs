@@ -1,3 +1,4 @@
+using FuncionariosEmpresa.Application.Interfaces;
 using FuncionariosEmpresa.Application.Services;
 using FuncionariosEmpresa.Data.Repositories;
 using FuncionariosEmpresa.Domain.Interfaces;

@@ -1,4 +1,5 @@
-﻿using FuncionariosEmpresa.Domain.Entities;
+﻿using FuncionariosEmpresa.Application.Interfaces;
+using FuncionariosEmpresa.Domain.Entities;
 using FuncionariosEmpresa.Domain.Interfaces;
 using System;
 using System.Collections.Generic;

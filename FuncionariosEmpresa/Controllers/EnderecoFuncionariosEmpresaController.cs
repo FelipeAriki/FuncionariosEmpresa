@@ -1,6 +1,5 @@
-﻿using FuncionariosEmpresa.Domain.Entities;
-using FuncionariosEmpresa.Domain.Interfaces;
-using Microsoft.AspNetCore.Http;
+﻿using FuncionariosEmpresa.Application.Interfaces;
+using FuncionariosEmpresa.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FuncionariosEmpresa.Controllers
